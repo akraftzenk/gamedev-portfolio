@@ -33,17 +33,19 @@ export default function ProjectVideo({ src, poster, label }: Props) {
   }, []);
 
   return (
-    <video
-      ref={ref}
-      src={src}
-      poster={poster}
-      aria-label={label}
-      className="w-full rounded-lg"
-      muted
-      loop
-      playsInline
-      controls
-      preload="metadata"
-    />
+    <div className="rounded-md bg-viewport p-2 shadow-paper">
+      <video
+        ref={ref}
+        src={src}
+        poster={poster}
+        aria-label={label}
+        className="w-full rounded-sm"
+        muted
+        loop
+        playsInline
+        controls
+        preload="metadata"
+      />
+    </div>
   );
 }

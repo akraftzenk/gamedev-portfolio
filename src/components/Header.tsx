@@ -9,7 +9,7 @@ const nav = [
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-10 h-15 border-b border-ink/10 bg-bg">
+    <header className="sticky top-0 z-10 h-15 border-b-2 border-ink bg-surface">
       <div className="mx-auto flex h-full max-w-content items-center justify-between px-4">
         <Link to="/" className="font-display text-2xl uppercase">
           {site.name}
@@ -21,7 +21,9 @@ export default function Header() {
                 <NavLink
                   to={to}
                   end={to === "/"}
-                  className={({ isActive }) => `font-medium ${isActive ? "text-accent" : ""}`}
+                  className={({ isActive }) =>
+                    `font-medium ${isActive ? "underline decoration-accent decoration-3 underline-offset-8" : ""}`
+                  }
                 >
                   {label}
                 </NavLink>

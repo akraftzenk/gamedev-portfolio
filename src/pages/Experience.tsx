@@ -7,9 +7,9 @@ export default function Experience() {
   return (
     <div className="mx-auto max-w-content px-4 py-12">
       <h1>Experience</h1>
-      <div className="grid gap-6">
+      <div className="grid gap-12">
         {experience.map((job) => (
-          <article key={job.company} className="rounded-xl bg-surface p-6">
+          <article key={job.company}>
             <h2>{job.role}</h2>
             <p className="mb-4 text-muted">
               {job.company} · {job.period}

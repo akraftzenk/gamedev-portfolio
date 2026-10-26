@@ -7,7 +7,7 @@ Personal portfolio for **Zeloi** (account handle: `akraftzenk`), a gameplay prog
 ## 1. Tech & conventions
 
 - **Old site** (`../portfolio`, live at zeloi.dev): Vite multi-page app (`index.html`, `projects.html`, `experience.html`), assets in `/assets/` with hashed names.
-- **This repo:** React 19 + TypeScript + Vite SPA, routing via React Router (`createBrowserRouter` in `src/router.tsx`). Styling is **Tailwind CSS v4** (via `@tailwindcss/vite`); design tokens (colors `bg`/`surface`/`ink`/`muted`/`accent`, fonts `font-display`/`font-sans`, `max-w-content`) live in the `@theme` block of `src/styles/index.css`. Note that Tailwind's preflight strips list styles, so add `list-disc pl-5` etc. when you want bullets. Prettier sorts class names. `@/` aliases `src/`.
+- **This repo:** React 19 + TypeScript + Vite SPA, routing via React Router (`createBrowserRouter` in `src/router.tsx`). Styling is **Tailwind CSS v4** (via `@tailwindcss/vite`); design tokens (colors `bg`/`grid`/`grid-major`/`surface`/`ink`/`muted`/`accent`/`link`/`annotate`/`viewport`, `shadow-paper`, fonts `font-display`/`font-sans`, `max-w-content`) live in the `@theme` block of `src/styles/index.css`, with dark-theme overrides below it. Their meaning and usage rules are in `DESIGN.md`. Note that Tailwind's preflight strips list styles, so add `list-disc pl-5` etc. when you want bullets. Prettier sorts class names. `@/` aliases `src/`.
 - Commands: `npm run dev`, `npm run build` (runs `tsc -b` first), `npm run lint`, `npm run format`. Run lint + build before calling work done.
 - Media lives in `public/media/` (clean names, referenced as `/media/...`); Super Indie font is in `public/fonts/`; Inter comes from `@fontsource-variable/inter`.
 - Deploys to GitHub Pages on push to `main`; the workflow copies `index.html` to `404.html` so deep links work. Domain is **zeloi.dev** (`public/CNAME`). This is a fresh site, not a continuation of the old repo; the owner handles the GoDaddy DNS → GitHub Pages hookup themselves.
@@ -21,16 +21,9 @@ Personal portfolio for **Zeloi** (account handle: `akraftzenk`), a gameplay prog
 
 **The visual system lives in [`DESIGN.md`](DESIGN.md). Read it before building or restyling anything.** It covers the chosen "design doc" direction (graph-paper light theme plus a blueprint-style dark theme), color tokens for both themes, type scale, layout, components, motion rules, and image/texture guidance. Where the two files conflict on visuals, `DESIGN.md` wins.
 
-### Keep
-- **Fonts stay as they are.** Display: **"Super Indie"** (used all-caps for the name, section titles, badges, hero line). Body: **Inter** (`Inter, -apple-system, sans-serif`). Do not suggest replacing Super Indie.
+The old site's design (pale gray/muted blue palette, large rounded cards, filled badges) is retired. Don't carry any of it forward; build only from `DESIGN.md`.
 
-### Known visual problems to fix (from the old site)
-1. **Sticky header is ~210px tall** (name, title, and nav stacked). Make it a single compact row (~60px): name on the left, nav on the right.
-2. **The only homepage image is blurred** (`filter: blur(16px)`, used as a glow behind the Featured Work card). Show real visuals sharply.
-3. **Hero has no visual** — just a blue box of text. Put gameplay footage/imagery above the fold.
-4. **Cramped side-by-side columns** on narrow screens (Education / How I work; the 3-stat row). Stack on mobile.
-5. **Bullets render as literal "- " dashes** inside list items. Use real list styling.
-6. **Projects page:** 6 videos all autoplay + loop, no controls, no posters, single long column. Use posters, `preload="metadata"`, play on hover/in-view, controls available, and a card grid (2 columns on desktop).
+- **Fonts stay as they are.** Display: **"Super Indie"**. Body: **Inter**. Do not suggest replacing Super Indie. Where each is used is defined in `DESIGN.md` §3.
 
 ## 3. Contact / identity
 
@@ -117,11 +110,11 @@ Prioritized roughly by impact-to-effort. These show engineering skill *through* 
 3. **Pathfinding playground** — Echo the node-graph editor: visitors click to place nodes/edges or walls and watch A* / Dijkstra search step by step. Shows algorithm knowledge clearly.
 4. **Project case-study pages** — `/projects/:slug` routes with a problem → approach → architecture diagram → code excerpt → result format. Syntax-highlighted Luau snippets (Shiki or Prism) of real, non-proprietary code. Recruiters judge code quality from these.
 5. **Smart video cards** — A reusable `<ProjectVideo>` that plays only when in view (IntersectionObserver) or on hover, shows a poster otherwise, and opens a lightbox with controls. Fixes the current autoplay problem and feels polished.
-6. **Animated stat counters & scroll reveals** — Count-up for "12+ years" and "160M+ plays"; subtle section reveals with Framer Motion (disabled under reduced motion).
+6. **Animated stat counters** — One-time count-up for "12+ years" and "160M+ plays" (rules in `DESIGN.md` §6). No section scroll reveals.
 7. **"Journey" timeline** — Turn the three journey bullets plus jobs into an interactive timeline (fifth grade → community → HoR2 → MSOE → internship), with media at each point.
 8. **Tech-stack filter** — Tag projects (Luau, AI, Graphics, Tools, UI, Web) and filter the grid with animated layout transitions.
 9. **Command palette (⌘K)** — Quick nav to sections, "copy email", "download resume". Small, but signals a developer who cares about UX.
-10. **Theme toggle / game-style polish** — Dark mode via CSS variables; optional subtle game-UI touches (hover sounds off by default, HUD-style section labels using Super Indie).
+10. **Theme toggle** — Day/Night toggle in the header; tokens and behavior are specified in `DESIGN.md` §2. The dark tokens already work off the OS setting; the toggle component and pre-paint script are still to build.
 11. **Live Roblox stats** — Show current play/visit counts for HoR2. Roblox's public APIs don't allow browser CORS, so this needs a tiny serverless function or a build-time fetch. Nice-to-have.
 
 Performance guardrails for the above: lazy-load heavy demos (`React.lazy` + `Suspense`), keep the initial bundle small, compress videos (H.264/WebM, ≤ ~2 MB each), and keep Lighthouse scores high — a fast site is itself a signal.

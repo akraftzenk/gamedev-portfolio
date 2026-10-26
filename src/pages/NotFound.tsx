@@ -8,7 +8,7 @@ export default function NotFound() {
     <div className="mx-auto max-w-content px-4 py-12">
       <h1>Page not found</h1>
       <p>
-        <Link to="/" className="text-accent underline">
+        <Link to="/" className="text-link underline">
           Back to the home page
         </Link>
       </p>

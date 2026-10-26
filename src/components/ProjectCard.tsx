@@ -3,7 +3,7 @@ import ProjectVideo from "./ProjectVideo";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="rounded-xl bg-surface p-6">
+    <article className="rounded-md border border-grid-major bg-surface p-6">
       <ProjectVideo src={project.video} poster={project.poster} label={project.title} />
       <h3 className="mt-4">{project.title}</h3>
       <p>
@@ -14,7 +14,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         {project.tags.map((tag) => (
           <li
             key={tag}
-            className="rounded-full bg-accent px-3 py-1 font-display text-xs text-accent-contrast uppercase"
+            className="rounded-sm border border-accent px-2 py-0.5 text-xs font-semibold"
           >
             {tag}
           </li>
