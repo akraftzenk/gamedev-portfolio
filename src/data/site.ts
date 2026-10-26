@@ -13,6 +13,10 @@ export const site = {
     discord: "https://discord.com/users/zeloi",
     // TODO: add GitHub profile and resume PDF (CLAUDE.md §3)
   },
+  avatar: {
+    src: "/media/avatar/headshot-front-ink.webp",
+    alt: "Zeloi's Roblox avatar: a cartoon character with a pink bowl cut, white shirt, and black tie",
+  },
   stats: [
     { label: "Experience", value: "12+ years" },
     { label: "Education", value: "B.S. software eng." },
