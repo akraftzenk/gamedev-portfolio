@@ -88,13 +88,13 @@ Rules:
 ### Borders, radius, shadow
 
 - Radius: **4px** (`rounded-sm`) for tags and small controls, **6px** (`rounded-md`) for frames, cards, and buttons. Nothing larger: no pill shapes, no `rounded-lg`/`rounded-xl`/`rounded-full`.
-- Shadows are **hard offset shadows only**: the `shadow-paper` utility (`6px 6px 0` in `grid-major`), like a sheet of paper lifted off the page. No soft blur shadows. In dark mode `shadow-paper` automatically becomes a 1px `grid-major` outline.
+- Shadows are **hard offset shadows only**: the `shadow-paper` utility (`6px 6px 0` in `grid-major`), like a sheet of paper lifted off the page. No soft blur shadows. The same offset applies in both themes; `grid-major` re-themes it.
 - Use cards sparingly. Most content sits directly on the paper; only things that are objects (a project, the contact card) get a `surface` panel.
 
 ## 5. Components
 
 **Viewport frame** — every image and video lives in one.
-`viewport` background, 8px padding, 6px radius, hard offset shadow (light mode). Caption below in Inter 0.8125rem `muted`. Never blur, darken, or crop the subject out. Media inside keeps its native aspect ratio.
+`viewport` background, 8px padding, 6px radius, hard offset shadow (`shadow-paper`). Caption below in Inter 0.8125rem `muted`. Never blur, darken, or crop the subject out. Media inside keeps its native aspect ratio.
 
 **Annotation** — the signature element.
 A short note in Super Indie (`annotate` color, rotated a few degrees) plus a hand-drawn SVG arrow, circle, or underline pointing at a specific part of an image or video.

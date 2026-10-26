@@ -19,9 +19,16 @@ export const site = {
   },
   stats: [
     { label: "Experience", value: "12+ years" },
+    { label: "Heroes of Robloxia franchise plays", value: "160M+" },
     { label: "Education", value: "B.S. software eng." },
-    { label: "Signature Project", value: "Heroes of Robloxia 2" },
   ],
+  heroVideo: {
+    src: "/media/enemy-ai.mp4",
+    poster: "/media/posters/enemy-ai.webp",
+    label: "Gameplay footage of the enemy and boss AI in Heroes of Robloxia 2",
+    // The featured game's title follows as a link.
+    caption: "Enemy & boss AI framework built for",
+  },
   journey: [
     {
       icon: "rocket",
@@ -39,6 +46,7 @@ export const site = {
   featured: {
     title: "Heroes of Robloxia 2",
     role: "Contract role",
+    playUrl: "https://www.roblox.com/games/8446283285/Heroes-of-Robloxia-2",
     highlights: [
       "Enemy AI: state-machine / behavior-tree hybrid",
       "Weapon systems",

@@ -1,5 +1,6 @@
 import { site } from "@/data/site";
 import StatRow from "@/components/StatRow";
+import ProjectVideo from "@/components/ProjectVideo";
 import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function Home() {
@@ -8,15 +9,35 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-content px-4">
-      {/* TODO: debug-view gameplay footage above the fold (DESIGN.md §7) */}
-      <section className="py-12">
-        <p className="text-muted">{site.title}</p>
-        <h1>{site.heroLine}</h1>
-        <p>{site.intro}</p>
-      </section>
+      {/* TODO: swap in debug-view footage once recorded (DESIGN.md §7.1) */}
+      <section className="grid gap-12 py-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-center">
+        <div>
+          <p className="text-muted">{site.title}</p>
+          <h1 className="text-[clamp(2rem,4.5vw,3rem)] leading-[1.02]">{site.heroLine}</h1>
+          <p className="max-w-[68ch]">{site.intro}</p>
+          <div className="mt-8">
+            <StatRow />
+          </div>
+        </div>
 
-      <section>
-        <StatRow />
+        <figure>
+          <ProjectVideo
+            src={site.heroVideo.src}
+            poster={site.heroVideo.poster}
+            label={site.heroVideo.label}
+          />
+          <figcaption className="mt-3 text-[0.8125rem] text-muted">
+            {site.heroVideo.caption}{" "}
+            {/* Deliberately quiet: the game isn't being promoted, just linked. */}
+            <a
+              href={featured.playUrl}
+              className="underline decoration-grid-major underline-offset-2 transition-colors hover:text-ink hover:decoration-accent"
+            >
+              {featured.title}
+            </a>
+            .
+          </figcaption>
+        </figure>
       </section>
 
       <section className="py-12">

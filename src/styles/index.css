@@ -60,7 +60,7 @@
   color-scheme: dark;
 }
 
-/* Hard offset "lifted paper" shadow by day, 1px outline by night. */
+/* Hard offset "lifted paper" shadow, down and to the right, in both themes. */
 @utility shadow-paper {
   box-shadow: var(--paper-shadow);
 }
@@ -74,14 +74,14 @@
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --paper-shadow: 0 0 0 1px var(--color-grid-major);
+      --paper-shadow: 6px 6px 0 var(--color-grid-major);
       --grain-opacity: 0.2;
       --grain-blend: soft-light;
     }
   }
 
   :root[data-theme="dark"] {
-    --paper-shadow: 0 0 0 1px var(--color-grid-major);
+    --paper-shadow: 6px 6px 0 var(--color-grid-major);
     --grain-opacity: 0.2;
     --grain-blend: soft-light;
   }

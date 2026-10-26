@@ -1,4 +1,5 @@
 import { site } from "@/data/site";
+import CountUp from "./CountUp";
 
 export default function StatRow() {
   return (
@@ -6,7 +7,9 @@ export default function StatRow() {
       {site.stats.map(({ label, value }) => (
         <div key={label} className="flex flex-col-reverse border-l-2 border-accent pl-3">
           <dt className="text-[0.8rem] text-muted">{label}</dt>
-          <dd className="font-display text-[1.6rem] leading-tight uppercase">{value}</dd>
+          <dd className="font-display text-[1.6rem] leading-tight uppercase">
+            <CountUp value={value} />
+          </dd>
         </div>
       ))}
     </dl>

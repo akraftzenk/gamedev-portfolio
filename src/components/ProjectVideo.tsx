@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 interface Props {
   src: string;
-  poster?: string;
+  poster: string;
   label: string;
 }
 
