@@ -1,7 +1,14 @@
+import { Link } from "react-router";
 import { site } from "@/data/site";
+import { projects } from "@/data/projects";
 import StatRow from "@/components/StatRow";
+import ProjectCard from "@/components/ProjectCard";
 import ProjectVideo from "@/components/ProjectVideo";
 import { usePageTitle } from "@/hooks/usePageTitle";
+
+const selectedWork = site.selectedWork.slugs.flatMap((slug) =>
+  projects.filter((p) => p.slug === slug),
+);
 
 export default function Home() {
   usePageTitle();
@@ -42,44 +49,88 @@ export default function Home() {
 
       <section className="py-12">
         <h2>The Journey</h2>
-        <ol className="list-decimal space-y-2 pl-5">
-          {site.journey.map(({ text }) => (
-            <li key={text}>{text}</li>
+        {/* Numbered because the order is real (DESIGN.md §4); the <ol> carries it for
+            screen readers, so the drawn numbers are decorative. */}
+        <ol className="space-y-4">
+          {site.journey.map(({ text }, i) => (
+            <li key={text} className="flex items-baseline gap-4">
+              <span
+                aria-hidden
+                className="w-10 shrink-0 font-display text-[1.6rem] leading-none text-link tabular-nums"
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span>{text}</span>
+            </li>
           ))}
         </ol>
       </section>
 
       <section className="rounded-md border border-grid-major bg-surface p-6">
-        <span className="inline-block rounded-sm border border-accent px-2 py-0.5 text-xs font-semibold">
-          Featured work
-        </span>
+        <span className="tag">Featured work</span>
         <h2 className="mt-4">{featured.title}</h2>
         <p className="mb-4 text-muted">{featured.role}</p>
-        <div className="rounded-md bg-viewport p-2 shadow-paper">
-          <img
-            src={featured.image}
-            alt={featured.imageAlt}
-            width={768}
-            height={432}
-            className="rounded-sm"
-          />
+        {/* Side by side from md, so the 768px image only ever scales down. */}
+        <div className="grid gap-6 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:items-center">
+          <div className="rounded-md bg-viewport p-2 shadow-paper">
+            <img
+              src={featured.image}
+              alt={featured.imageAlt}
+              width={768}
+              height={432}
+              className="w-full rounded-sm"
+            />
+          </div>
+          <ul className="list-disc space-y-1 pl-5">
+            {featured.highlights.map((h) => (
+              <li key={h}>{h}</li>
+            ))}
+          </ul>
         </div>
-        <ul className="mt-4 list-disc space-y-1 pl-5">
-          {featured.highlights.map((h) => (
-            <li key={h}>{h}</li>
-          ))}
-        </ul>
       </section>
 
-      <section className="grid gap-12 py-12 md:grid-cols-2">
-        <div>
-          <h2>Education</h2>
-          <p>{site.education}</p>
+      <section className="pt-12">
+        <h2>Selected Work</h2>
+        <div className="grid gap-6 md:grid-cols-2">
+          {selectedWork.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
         </div>
-        <div>
-          <h2>How I Work</h2>
-          <p>{site.howIWork}</p>
+        <Link to="/projects" className="mt-8 btn">
+          {site.selectedWork.allLabel}
+          <span aria-hidden>→</span>
+        </Link>
+      </section>
+
+      <section className="py-12">
+        <h2>How I Work</h2>
+        <div className="grid gap-8 md:grid-cols-3 md:gap-6">
+          {site.howIWork.map(({ title, text }) => (
+            <div key={title} className="border-l-2 border-accent pl-4">
+              <h3 className="mb-2 text-xl">{title}</h3>
+              <p>{text}</p>
+            </div>
+          ))}
         </div>
+
+        <dl className="mt-10 space-y-4 border-t border-grid-major pt-6">
+          <div>
+            <dt className="text-[0.8rem] text-muted">Education</dt>
+            <dd>{Object.values(site.education).join(" · ")}</dd>
+          </div>
+          <div>
+            <dt className="text-[0.8rem] text-muted">Toolbox</dt>
+            <dd>
+              <ul aria-label="Tools" className="mt-1 flex flex-wrap gap-2">
+                {site.toolbox.map((tool) => (
+                  <li key={tool} className="tag">
+                    {tool}
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+        </dl>
       </section>
     </div>
   );

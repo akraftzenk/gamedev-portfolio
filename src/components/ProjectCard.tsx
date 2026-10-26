@@ -12,10 +12,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       </p>
       <ul aria-label="Tags" className="mt-4 flex flex-wrap gap-2">
         {project.tags.map((tag) => (
-          <li
-            key={tag}
-            className="rounded-sm border border-accent px-2 py-0.5 text-xs font-semibold"
-          >
+          <li key={tag} className="tag">
             {tag}
           </li>
         ))}

@@ -56,7 +56,43 @@ export const site = {
     // TODO: describe what the image actually shows
     imageAlt: "Heroes of Robloxia 2 gameplay",
   },
-  education: "B.S. in software engineering, minor in mathematics, MSOE.",
-  howIWork:
-    "Lua/Luau is my primary environment, backed by strong Object-Oriented Programming and software architecture principles from my engineering degree. Proven ability to quickly adapt to existing codebases or engineer clean systems from scratch.",
+  // Slugs from projects.ts, in display order.
+  // TODO: replace pathfinding-editor with the new project once its footage is recorded.
+  selectedWork: {
+    slugs: ["pathfinding-editor", "mining-game"],
+    allLabel: "See all projects",
+  },
+  education: {
+    school: "MSOE",
+    degree: "B.S. Software Engineering",
+    minor: "Minor in Mathematics",
+    year: 2025,
+  },
+  howIWork: [
+    {
+      title: "Architecture first",
+      text: "Strong Object-Oriented Programming and software architecture principles from my engineering degree, applied to every system I build in Lua/Luau.",
+    },
+    {
+      title: "Fast in any codebase",
+      text: "Proven ability to quickly adapt to existing codebases or engineer clean systems from scratch.",
+    },
+    {
+      title: "AI-accelerated, human-directed",
+      text: "I use AI to speed up development while keeping the design decisions my own. I plan the architecture, guide the AI with clear prompts, project instructions like CLAUDE.md, and coding conventions, and review everything it writes.",
+    },
+  ],
+  toolbox: [
+    "Luau",
+    "Roblox Studio",
+    "TypeScript",
+    "React",
+    "Java",
+    "SQL",
+    "Git",
+    "Claude Code",
+    "PHP",
+    "JavaScript",
+    "C",
+  ],
 } as const;

@@ -18,29 +18,19 @@ export default function ContactCard() {
         />
         <div className="relative rounded-md border border-grid-major bg-surface p-6">
           <h2>Contact Me</h2>
-          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+          <ul className="mt-6 flex flex-wrap gap-4">
             <li>
-              <a href={site.links.email} className="text-link underline">
-                Email
+              <a href={site.links.email} className="btn btn-primary">
+                Email me
               </a>
             </li>
             <li>
-              <a
-                href={site.links.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="text-link underline"
-              >
+              <a href={site.links.linkedin} target="_blank" rel="noreferrer" className="btn">
                 LinkedIn
               </a>
             </li>
             <li>
-              <a
-                href={site.links.discord}
-                target="_blank"
-                rel="noreferrer"
-                className="text-link underline"
-              >
+              <a href={site.links.discord} target="_blank" rel="noreferrer" className="btn">
                 Discord
               </a>
             </li>
