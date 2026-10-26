@@ -1,4 +1,9 @@
+import Annotation from "@/components/Annotation";
+import SmackableAvatar from "@/components/SmackableAvatar";
 import { site } from "@/data/site";
+
+// Curves from under the note into the avatar's cheek, then the arrowhead.
+const ARROW = ["M8 6 C 22 34, 62 52, 110 42", "M97 34 L 111 42 L 99 53"];
 
 export default function ContactCard() {
   return (
@@ -7,15 +12,14 @@ export default function ContactCard() {
         {/* The render is cut off at the chest; tucking that edge behind the card makes the
             avatar look like it's standing behind it. The card comes later in the DOM, so it
             paints over the overlap. */}
-        <img
-          src={site.avatar.src}
-          alt={site.avatar.alt}
-          width={1200}
-          height={1200}
-          loading="lazy"
-          decoding="async"
-          className="relative mr-6 -mb-1 ml-auto block w-32 select-none md:w-44"
-        />
+        <div className="relative mr-6 -mb-1 ml-auto w-32 md:w-44">
+          <SmackableAvatar />
+          <Annotation
+            text={site.avatar.prompt}
+            paths={ARROW}
+            className="absolute top-[14%] right-[64%] w-24 md:w-32"
+          />
+        </div>
         <div className="relative rounded-md border border-grid-major bg-surface p-6">
           <h2>Contact Me</h2>
           <ul className="mt-6 flex flex-wrap gap-4">

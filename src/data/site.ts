@@ -16,6 +16,10 @@ export const site = {
   avatar: {
     src: "/media/avatar/headshot-front-ink.webp",
     alt: "Zeloi's Roblox avatar: a cartoon character with a pink bowl cut, white shirt, and black tie",
+    // Swapped in while the avatar is being smacked (same camera as `src`).
+    flinchSrc: "/media/avatar/headshot-front-flinch-ink.webp",
+    smackSound: "/media/sfx/smack.mp3",
+    prompt: "Click me!",
   },
   stats: [
     { label: "Experience", value: "12+ years" },

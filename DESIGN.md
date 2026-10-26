@@ -119,7 +119,8 @@ A short note in Super Indie (`annotate` color, rotated a few degrees) plus a han
 
 **Lists** — real bullets (`list-disc pl-5`, since Tailwind preflight strips them), with markers in `accent`.
 
-**Avatar peek** — the ink-style avatar headshot (`/media/avatar/headshot-front-ink.webp`) stands behind the top edge of the Contact Me card, right-aligned with the card's 24px padding. The render is cut off at the chest, and the card overlaps that edge by 4px so the body reads as hidden behind it. It's the footer's one playful touch: no animation, and don't repeat the trick elsewhere on the same screen.
+**Avatar peek** — the ink-style avatar headshot (`/media/avatar/headshot-front-ink.webp`) stands behind the top edge of the Contact Me card, right-aligned with the card's 24px padding. The render is cut off at the chest, and the card overlaps that edge by 4px so the body reads as hidden behind it. It's the footer's one playful touch, so don't repeat the trick elsewhere on the same screen.
+It's also a button: clicking it swaps in the flinch render (`headshot-front-flinch-ink.webp`, same camera) for ~450ms, gives a ~180ms shake, and plays `/media/sfx/smack.mp3`. Under reduced motion it flinches and plays the sound, with no shake. A "Click me!" annotation with an arrow points at it; that counts toward the screen's annotation budget.
 
 **Diagrams** (state machines, architecture) — SVG, labels in Super Indie, strokes in `ink`, with the "active" or important node in `annotate`. Use `currentColor`/tokens so they re-theme. These double as the static fallback for the interactive demos.
 

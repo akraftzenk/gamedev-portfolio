@@ -103,6 +103,18 @@
   color: var(--color-bg);
 }
 
+/* Annotation arrows draw themselves in once (DESIGN.md §6). Paths use pathLength="1". */
+.annotation-stroke {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s ease-out;
+}
+
+[data-draw="pending"] .annotation-stroke {
+  stroke-dashoffset: 1;
+  transition: none;
+}
+
 @layer base {
   :root {
     --paper-shadow: 6px 6px 0 var(--color-grid-major);
