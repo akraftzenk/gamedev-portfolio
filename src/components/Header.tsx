@@ -9,7 +9,7 @@ const nav = [
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-10 h-15 border-b-2 border-ink bg-surface">
+    <header className="sticky top-0 z-10 h-15 border-b-2 border-ink bg-surface shadow-[0_4px_0_color-mix(in_oklab,var(--color-grid-major)_70%,transparent)]">
       <div className="mx-auto flex h-full max-w-content items-center justify-between px-4">
         <Link to="/" className="font-display text-2xl uppercase">
           {site.name}
