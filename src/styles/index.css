@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Super Indie";
+  src:
+    url("/fonts/SuperIndie.woff2") format("woff2"),
+    url("/fonts/SuperIndie.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Palette: approximate values from the current site. Expected to change in the redesign. */
+  --color-bg: #eef1f5;
+  --color-surface: #ffffff;
+  --color-ink: #2a2d45;
+  --color-muted: #5b5f7a;
+  --color-accent: #7090c4;
+  --color-accent-contrast: #ffffff;
+
+  --font-display: "Super Indie", "Inter Variable", sans-serif;
+  --font-sans: "Inter Variable", Inter, -apple-system, sans-serif;
+
+  --container-content: 1100px;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: --spacing(15);
+  }
+
+  body {
+    @apply bg-bg font-sans leading-relaxed text-ink antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply mb-4 font-display leading-tight uppercase;
+  }
+
+  h1 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

@@ -6,8 +6,11 @@ Personal portfolio for **Zeloi** (account handle: `akraftzenk`), a gameplay prog
 
 ## 1. Tech & conventions
 
-- **Current build:** Vite multi-page app (`index.html`, `projects.html`, `experience.html`), assets in `/assets/` with hashed names.
-- **Target:** React + Vite (SPA with React Router, or keep multi-page — decide early). TypeScript preferred.
+- **Old site** (`../portfolio`, live at zeloi.dev): Vite multi-page app (`index.html`, `projects.html`, `experience.html`), assets in `/assets/` with hashed names.
+- **This repo:** React 19 + TypeScript + Vite SPA, routing via React Router (`createBrowserRouter` in `src/router.tsx`). Styling is **Tailwind CSS v4** (via `@tailwindcss/vite`); design tokens (colors `bg`/`surface`/`ink`/`muted`/`accent`, fonts `font-display`/`font-sans`, `max-w-content`) live in the `@theme` block of `src/styles/index.css`. Note that Tailwind's preflight strips list styles, so add `list-disc pl-5` etc. when you want bullets. Prettier sorts class names. `@/` aliases `src/`.
+- Commands: `npm run dev`, `npm run build` (runs `tsc -b` first), `npm run lint`, `npm run format`. Run lint + build before calling work done.
+- Media lives in `public/media/` (clean names, referenced as `/media/...`); Super Indie font is in `public/fonts/`; Inter comes from `@fontsource-variable/inter`.
+- Deploys to GitHub Pages on push to `main`; the workflow copies `index.html` to `404.html` so deep links work. Domain is **zeloi.dev** (`public/CNAME`). This is a fresh site, not a continuation of the old repo; the owner handles the GoDaddy DNS → GitHub Pages hookup themselves.
 - Keep it static-hostable (no server required).
 - Mobile-first. Test at 375px, 768px, and 1280px+.
 - Every page needs: `<title>`, meta description, Open Graph/Twitter tags, favicon. (Current site has **none** of these.)
@@ -130,7 +133,7 @@ Prioritized roughly by impact-to-effort. These show engineering skill *through* 
 
 Performance guardrails for the above: lazy-load heavy demos (`React.lazy` + `Suspense`), keep the initial bundle small, compress videos (H.264/WebM, ≤ ~2 MB each), and keep Lighthouse scores high — a fast site is itself a signal.
 
-## 7. Suggested component structure
+## 7. Component structure (scaffolded; `demos/` and the unbuilt components are still to come)
 
 ```
 src/
@@ -155,7 +158,7 @@ src/
     experience.ts       // content from section 4.3
     site.ts             // name, title, links, stats
   styles/
-    tokens.css          // colors, spacing, font vars
+    index.css           // Tailwind import + @theme tokens
 ```
 
 Keep all copy in `src/data/` so content edits never touch components.
