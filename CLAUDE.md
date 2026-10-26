@@ -19,19 +19,12 @@ Personal portfolio for **Zeloi** (account handle: `akraftzenk`), a gameplay prog
 
 ## 2. Design direction
 
+**The visual system lives in [`DESIGN.md`](DESIGN.md). Read it before building or restyling anything.** It covers the chosen "design doc" direction (graph-paper light theme plus a blueprint-style dark theme), color tokens for both themes, type scale, layout, components, motion rules, and image/texture guidance. Where the two files conflict on visuals, `DESIGN.md` wins.
+
 ### Keep
 - **Fonts stay as they are.** Display: **"Super Indie"** (used all-caps for the name, section titles, badges, hero line). Body: **Inter** (`Inter, -apple-system, sans-serif`). Do not suggest replacing Super Indie.
 
-### Current palette (approximate, from screenshots)
-| Token | Value | Use |
-|---|---|---|
-| `--bg` | ~`#EEF1F5` | page background (pale gray) |
-| `--text` | ~`#2A2D45` | headings/body (dark navy) |
-| `--accent` | ~`#7090C4` | heading boxes, contact card, badges (muted blue) |
-
-The palette may change in the redesign (owner is open to a darker, more game-flavored look with one strong accent). Define colors as CSS variables so it's easy to swap.
-
-### Known visual problems to fix
+### Known visual problems to fix (from the old site)
 1. **Sticky header is ~210px tall** (name, title, and nav stacked). Make it a single compact row (~60px): name on the left, nav on the right.
 2. **The only homepage image is blurred** (`filter: blur(16px)`, used as a glow behind the Featured Work card). Show real visuals sharply.
 3. **Hero has no visual** — just a blue box of text. Put gameplay footage/imagery above the fold.
